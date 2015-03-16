@@ -6,8 +6,8 @@ use std::old_io::process::{Command, ProcessOutput};
 use std::old_io::{File};
 
 pub fn main() {
-    match Command::new("git")
-        .arg("clone").arg("https://github.com/rust-lang/rust.git").output() {
+    match Command::new("git").arg("clone").arg("--depth").arg("1")
+        .arg("https://github.com/rust-lang/rust.git").output() {
             Ok(ProcessOutput { status: exit, output: out, error: err }) => {
                 if exit.success() {
                 } else {
